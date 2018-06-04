@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+<style>
+body  {
+
+      font-family: 'Jua', sans-serif;
+}
+
+.body{
+  background-image: url("1.jpg");
+  background-color: #cccccc;
+}
+</style>
+<script type="text/javascript">
+var index = 0;
+
+  var listaimg = ["0.jpeg", "1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg"];
+
+$(function() {
+
+  setInterval(changeImage, 2000);
+
+});
+
+function changeImage() {
+
+
+ $('.body').css("background-image", 'url(' + listaimg[index] + ')');
+
+ index++;
+
+ if(index == 13)
+    index = 0;
+
+
+}
+
+function getTime() {
+  now = new Date();
+  y2k = new Date("Jun 5 2018 08:30:00");
+  days = (y2k - now) / 1000 / 60 / 60 / 24;
+  daysRound = Math.floor(days);
+  hours = (y2k - now) / 1000 / 60 / 60 - (24 * daysRound);
+  hoursRound = Math.floor(hours);
+  minutes = (y2k - now) / 1000 /60 - (24 * 60 * daysRound) - (60 * hoursRound);
+  minutesRound = Math.floor(minutes);
+  seconds = (y2k - now) / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound);
+  secondsRound = Math.round(seconds);
+  sec = (secondsRound == 1) ? " segundo" : " segundos";
+  min = (minutesRound == 1) ? " minuto" : " minutos, ";
+  hr = (hoursRound == 1) ? " hora" : " horas, ";
+  dy = (daysRound == 1)  ? " día" : " d&iacute;as, "
+  document.getElementById("counter").innerHTML = "Faltan " + daysRound  + dy + hoursRound + hr + minutesRound + min + secondsRound + sec + " <br />para la Apertura!!!";
+  newtime = window.setTimeout("getTime();", 1000);
+  }
+</script>
+
+</head>
+<body onload="getTime()" class="body">
+
+
+<p style="color:#000000;text-align:center;font-size: 93px;margin-top: 312px;" id="counter"></p>
+
+
+</body>
+</html>
